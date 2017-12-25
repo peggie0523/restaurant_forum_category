@@ -23,7 +23,7 @@ class Admin::RestaurantsController < ApplicationController
   end
 
 
-  before_action :set_restaurant, only: [:show, :edit, :update]
+  before_action :set_restaurant, only: [:show, :edit, :update, :destroy]
 
   def show
     #將原本程式碼移到 private 下，命名為 set_restaurant
@@ -40,6 +40,12 @@ class Admin::RestaurantsController < ApplicationController
       flash.now[:alert] = "restaurant was failed to update"
       render :edit
     end
+  end
+
+  def destroy
+    @restaurant.destroy
+    redirect_to admin_restaurants_path
+    flash[:alert] = "restaurant was deleted"
   end
 
   private
