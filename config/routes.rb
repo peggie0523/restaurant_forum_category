@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resources :restaurants, except: [:new, :create, :edit, :update, :destroy]
     resources :categories
     root "restaurants#index"
+    resources :categories, only: :show
  end
 
 end
