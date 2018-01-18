@@ -4,12 +4,11 @@ Rails.application.routes.draw do
 
  root "restaurants#index"
  resources :restaurants, only: [:index, :show]
-
+ resources :categories, only: :show
  namespace :admin do
     resources :restaurants, except: [:new, :create, :edit, :update, :destroy]
-    resources :categories
     root "restaurants#index"
-    resources :categories, only: :show
+   
  end
 
 end
